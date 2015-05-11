@@ -1,0 +1,27 @@
+{
+  "name": "<%= repo %>",
+  "version": "0.0.0",
+  "authors": ["<%= author %>"],
+  "description": "<%= description %>",
+  "main": "dist/<%= repo %>.js",
+  "moduleType": [
+    "es6",
+    "globals"
+  ],
+  "keywords": [
+    "koto",
+    "chart",
+    "d3"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "koto": "~0.0.40"
+  }
+}

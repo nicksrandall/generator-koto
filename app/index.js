@@ -5,7 +5,7 @@ var yosay = require('yosay');
 var npm = require('npm');
 var gitConfig = require('git-config');
 var camelcase = require('lodash.camelcase');
-var kebabcase = require('lodash.kebabcase');
+var capitalize = require('lodash.capitalize');
 
 module.exports = yeoman.generators.Base.extend({
   initializing: function () {
@@ -17,7 +17,7 @@ module.exports = yeoman.generators.Base.extend({
 
     // Have Yeoman greet the user.
     this.log(yosay(
-      'Welcome to the super-duper ' + chalk.red('Es6LibraryBoilerplate') + ' generator!'
+      'Welcome to the ' + chalk.red('Koto') + ' generator!'
     ));
 
     npm.load(function() {
@@ -31,7 +31,7 @@ module.exports = yeoman.generators.Base.extend({
         type: 'input',
         name: 'repo',
         message: 'What is your repo/projects name?',
-        default: kebabcase(this.appname)
+        default: 'koto.' + capitalize(camelcase(this.appname))
       }, {
         type: 'input',
         name: 'description',
@@ -44,8 +44,8 @@ module.exports = yeoman.generators.Base.extend({
       }, {
         type: 'input',
         name: 'global',
-        message: 'What would you like the global to be (in browsers)?',
-        default: camelcase(this.appname)
+        message: 'What would you like to attach to the koto global (in browsers)? ex. koto.[name]',
+        default: capitalize(camelcase(this.appname))
       }];
 
       this.prompt(prompts, function (props) {
@@ -62,15 +62,17 @@ module.exports = yeoman.generators.Base.extend({
   writing: {
     app: function () {
       this.template('jshintrc', '.jshintrc');
+      this.template('jscsrc', '.jscsrc');
       this.template('travis.yml', '.travis.yml');
       this.template('_package.json', 'package.json');
+      this.template('_bower.json', 'bower.json');
       this.template('LICENSE.md', 'LICENSE.md');
       this.template('README.md', 'README.md');
       this.template('gulpfile.js', 'gulpfile.js');
-      this.mkdir('config');
-      this.template('config/index.json', 'config/index.json');
       this.mkdir('src');
-      this.template('src/index.js', 'src/' + this.repo + '.js');
+      this.template('src/index.js', 'src/' + this.global + '.js');
+      this.template('src/builder.js', 'src/builder.js');
+      this.template('src/configs.js', 'src/configs.js');
       this.mkdir('test');
       this.template('test/jshintrc', 'test/.jshintrc');
       this.template('test/runner.html', 'test/runner.html');
@@ -79,13 +81,13 @@ module.exports = yeoman.generators.Base.extend({
       this.template('test/setup/node.js', 'test/setup/node.js');
       this.template('test/setup/setup.js', 'test/setup/setup.js');
       this.mkdir('test/unit');
-      this.template('test/unit/index.js', 'test/unit/' + this.repo + '.js');
+      this.template('test/unit/index.js', 'test/unit/' + this.global + '.js');
     }
   },
 
   install: function () {
     this.installDependencies({
-      bower: false,
+      bower: true,
       npm: true,
       skipInstall: this.options['skip-install']
     });

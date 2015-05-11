@@ -1,8 +1,6 @@
 // FOR USE WITH DOMO APP BUILDER
-import AutoWidgets from 'AutoWidgets';
-
 AutoWidgets.register({
-  name: 'BarChart',
+  name: '<%= global %>',
   data: [{
       name: 'model',
       columnNames: [{
