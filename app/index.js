@@ -40,7 +40,7 @@ module.exports = yeoman.generators.Base.extend({
         type: 'input',
         name: 'author',
         message: 'Who is the author of this project?',
-        default: config.user.name + ' <' + config.user.email + '>'
+        default: config && config.user ? config.user.name + ' <' + config.user.email + '>' : ''
       }, {
         type: 'input',
         name: 'global',
