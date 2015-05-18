@@ -26,7 +26,7 @@ module.exports = yeoman.generators.Base.extend({
       var username;
       try {
         username = npm.whoami();
-      } catch() {
+      } catch (e) {
         username = '';
       }
 
