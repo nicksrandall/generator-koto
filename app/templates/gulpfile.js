@@ -176,6 +176,10 @@ gulp.task('watch', function() {
   gulp.watch(watchFiles, ['test']);
 });
 
+gulp.task('watch-build', function() {
+  gulp.watch(watchFiles, ['test', 'build']);
+});
+
 // Set up a livereload environment for our spec runner
 gulp.task('test-browser', ['jsdom', 'build-in-sequence'], function() {
   $.livereload.listen({port: 35729, host: 'localhost', start: true});
@@ -185,7 +189,7 @@ gulp.task('test-browser', ['jsdom', 'build-in-sequence'], function() {
 // An alias of test
 gulp.task('default', ['test']);
 
-gulp.task('serve', ['watch'], function() {
+gulp.task('serve', ['build', 'watch-build'], function() {
   gulp.watch(['demo/**/*.*', 'dist/*.js'], ['demo']);
   connect.server({
     root: ['demo', 'bower_components', 'dist'],
