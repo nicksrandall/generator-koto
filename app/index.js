@@ -2,7 +2,6 @@
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
-var npm = require('npm');
 var gitConfig = require('git-config');
 var camelcase = require('lodash.camelcase');
 var capitalize = require('lodash.capitalize');
@@ -23,18 +22,10 @@ module.exports = yeoman.generators.Base.extend({
     npm.load(function() {
       var config = gitConfig.sync();
 
-      var username;
-      try {
-        username = npm.whoami();
-      } catch (e) {
-        username = '';
-      }
-
       var prompts = [{
         type: 'input',
         name: 'user',
-        message: 'What is your github username/organization?',
-        default: username
+        message: 'What is your github username/organization?'
       }, {
         type: 'input',
         name: 'repo',
