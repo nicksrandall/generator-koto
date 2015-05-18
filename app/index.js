@@ -19,42 +19,40 @@ module.exports = yeoman.generators.Base.extend({
       'Welcome to the ' + chalk.red('Koto') + ' generator!'
     ));
 
-    npm.load(function() {
-      var config = gitConfig.sync();
+    var config = gitConfig.sync();
 
-      var prompts = [{
-        type: 'input',
-        name: 'user',
-        message: 'What is your github username/organization?'
-      }, {
-        type: 'input',
-        name: 'repo',
-        message: 'What is your repo/projects name?',
-        default: 'koto.' + capitalize(camelcase(this.appname))
-      }, {
-        type: 'input',
-        name: 'description',
-        message: 'What is a description of this project? (eg. A nice koto chart.)'
-      }, {
-        type: 'input',
-        name: 'author',
-        message: 'Who is the author of this project?',
-        default: (config && config.user && config.user.name) ? config.user.name + ' <' + config.user.email + '>' : ''
-      }, {
-        type: 'input',
-        name: 'global',
-        message: 'What would you like to attach to the koto global (in browsers)? ex. koto.[name]',
-        default: capitalize(camelcase(this.appname))
-      }];
+    var prompts = [{
+      type: 'input',
+      name: 'user',
+      message: 'What is your github username/organization?'
+    }, {
+      type: 'input',
+      name: 'repo',
+      message: 'What is your repo/projects name?',
+      default: 'koto.' + capitalize(camelcase(this.appname))
+    }, {
+      type: 'input',
+      name: 'description',
+      message: 'What is a description of this project? (eg. A nice koto chart.)'
+    }, {
+      type: 'input',
+      name: 'author',
+      message: 'Who is the author of this project?',
+      default: (config && config.user && config.user.name) ? config.user.name + ' <' + config.user.email + '>' : ''
+    }, {
+      type: 'input',
+      name: 'global',
+      message: 'What would you like to attach to the koto global (in browsers)? ex. koto.[name]',
+      default: capitalize(camelcase(this.appname))
+    }];
 
-      this.prompt(prompts, function (props) {
-        this.user = props.user;
-        this.repo = props.repo;
-        this.description = props.description;
-        this.author = props.author;
-        this.global = props.global;
-        done();
-      }.bind(this));
+    this.prompt(prompts, function (props) {
+      this.user = props.user;
+      this.repo = props.repo;
+      this.description = props.description;
+      this.author = props.author;
+      this.global = props.global;
+      done();
     }.bind(this));
   },
 

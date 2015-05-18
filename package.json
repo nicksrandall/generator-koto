@@ -1,6 +1,6 @@
 {
   "name": "generator-koto",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Generator for koto charts.",
   "license": "MIT",
   "main": "app/index.js",
