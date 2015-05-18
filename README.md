@@ -2,6 +2,8 @@
 
 Generator for KotoJS Charts
 
+[![Build Status](https://travis-ci.org/nicksrandall/generator-koto.svg?branch=master)](https://travis-ci.org/nicksrandall/generator-koto)
+
 ```sh
 $ npm i -g yo generator-koto
 $ yo koto
