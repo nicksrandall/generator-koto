@@ -7,7 +7,7 @@ var configs = [{
   category: 'Size'
 }, {
   name: 'width',
-  description: 'The widthj of the chart.',
+  description: 'The width of the chart.',
   value: 800,
   units: 'px',
   type: 'number',
