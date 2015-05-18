@@ -22,11 +22,19 @@ module.exports = yeoman.generators.Base.extend({
 
     npm.load(function() {
       var config = gitConfig.sync();
+
+      var username;
+      try {
+        username = npm.whoami();
+      } catch() {
+        username = '';
+      }
+
       var prompts = [{
         type: 'input',
         name: 'user',
         message: 'What is your github username/organization?',
-        default: npm.whoami()
+        default: username
       }, {
         type: 'input',
         name: 'repo',
@@ -35,12 +43,12 @@ module.exports = yeoman.generators.Base.extend({
       }, {
         type: 'input',
         name: 'description',
-        message: 'What is a description of this project? (eg. A nice module.)'
+        message: 'What is a description of this project? (eg. A nice koto chart.)'
       }, {
         type: 'input',
         name: 'author',
         message: 'Who is the author of this project?',
-        default: config && config.user ? config.user.name + ' <' + config.user.email + '>' : ''
+        default: (config && config.user && config.user.name) ? config.user.name + ' <' + config.user.email + '>' : ''
       }, {
         type: 'input',
         name: 'global',
