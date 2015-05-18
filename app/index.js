@@ -79,6 +79,14 @@ module.exports = yeoman.generators.Base.extend({
       this.template('test/setup/setup.js', 'test/setup/setup.js');
       this.mkdir('test/unit');
       this.template('test/unit/index.js', 'test/unit/' + this.global + '.js');
+
+      // Demo (server) stuff
+      this.mkdir('demo');
+      this.mkdir('demo/css');
+      this.template('demo/css/main.css', 'demo/css/main.css');
+      this.mkdir('demo/js');
+      this.template('demo/js/main.js', 'demo/js/main.js');
+      this.template('demo/index.html', 'demo/index.html');
     }
   },
 

@@ -6,5 +6,6 @@ Generator for KotoJS Charts
 
 ```sh
 $ npm i -g yo generator-koto
+$ mkdir [name] && cd $_
 $ yo koto
 ```
