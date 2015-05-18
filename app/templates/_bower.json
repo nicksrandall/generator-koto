@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "authors": ["<%= author %>"],
   "description": "<%= description %>",
-  "main": "dist/<%= repo %>.js",
+  "main": "dist/chart.js",
   "moduleType": [
     "es6",
     "globals"

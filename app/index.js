@@ -51,7 +51,7 @@ module.exports = yeoman.generators.Base.extend({
       this.repo = props.repo;
       this.description = props.description;
       this.author = props.author;
-      this.global = props.global;
+      this.global = capitalize(props.global);
       done();
     }.bind(this));
   },
@@ -65,6 +65,7 @@ module.exports = yeoman.generators.Base.extend({
       this.template('_bower.json', 'bower.json');
       this.template('LICENSE.md', 'LICENSE.md');
       this.template('README.md', 'README.md');
+      this.template('gitignore', '.gitignore');
       this.template('gulpfile.js', 'gulpfile.js');
       this.mkdir('src');
       this.template('src/index.js', 'src/' + this.global + '.js');

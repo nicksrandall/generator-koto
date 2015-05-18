@@ -1,5 +1,5 @@
 // Initialize
-var chart = new <%= global %>(d3.select('#chart'));
+var chart = new koto.<%= global %>(d3.select('#chart'));
 
 // Render
 var data = [
